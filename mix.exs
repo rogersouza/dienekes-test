@@ -20,7 +20,7 @@ defmodule Dienekes.MixProject do
   def application do
     [
       mod: {Dienekes.Application, []},
-      extra_applications: [:logger, :runtime_tools]
+      extra_applications: [:logger, :runtime_tools, :httpoison]
     ]
   end
 
@@ -41,7 +41,8 @@ defmodule Dienekes.MixProject do
       {:gettext, "~> 0.11"},
       {:jason, "~> 1.0"},
       {:plug_cowboy, "~> 2.0"},
-      {:mox, "~> 0.3", only: :test}
+      {:mox, "~> 0.3", only: :test},
+      {:httpoison, "~> 1.4"}
     ]
   end
 

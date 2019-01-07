@@ -8,7 +8,8 @@
 use Mix.Config
 
 config :dienekes,
-  ecto_repos: [Dienekes.Repo]
+  ecto_repos: [Dienekes.Repo],
+  api_endpoint: "http://challenge.dienekes.com.br:8888/api/numbers"
 
 # Configures the endpoint
 config :dienekes, DienekesWeb.Endpoint,
