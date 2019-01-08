@@ -4,11 +4,10 @@ defmodule Dienekes.Numbers.NumbersAgentTest do
   alias Dienekes.Numbers.NumbersAgent
 
   test "stores a list of numbers" do
-    {:ok, pid} = NumbersAgent.start_link([])
-    assert NumbersAgent.get(pid) == []
+    assert NumbersAgent.get() == []
 
     number_list = for n <- 1..100, do: n
-    NumbersAgent.put(pid, number_list)
-    assert NumbersAgent.get(pid) == number_list
+    NumbersAgent.put(number_list)
+    assert NumbersAgent.get() == number_list
   end
 end

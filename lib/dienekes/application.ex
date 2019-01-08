@@ -11,9 +11,10 @@ defmodule Dienekes.Application do
       # Start the Ecto repository
       Dienekes.Repo,
       # Start the endpoint when the application starts
-      DienekesWeb.Endpoint
+      DienekesWeb.Endpoint,
       # Starts a worker by calling: Dienekes.Worker.start_link(arg)
       # {Dienekes.Worker, arg},
+      Dienekes.Numbers.NumbersAgent
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html

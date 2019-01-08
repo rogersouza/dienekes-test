@@ -21,4 +21,5 @@ defmodule Dienekes.Numbers.HTTPClientTests do
     assert {:ok, _} = HTTPClientMock.get_numbers_from(2)
     assert {:error, "empty list"} = HTTPClientMock.get_numbers_from(10_001)
   end
+
 end
