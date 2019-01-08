@@ -10,4 +10,11 @@ defmodule Dienekes.Numbers.NumbersAgentTest do
     NumbersAgent.put(number_list)
     assert NumbersAgent.get() == number_list
   end
+
+  test "delete_all wipe out the agent state" do
+    number_list = for n <- 1..100, do: n
+    NumbersAgent.put(number_list)
+
+    assert :ok = NumbersAgent.delete_all()
+  end
 end

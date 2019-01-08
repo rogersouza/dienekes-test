@@ -15,6 +15,7 @@ defmodule Dienekes.Numbers.HTTPClient do
       {:ok, numbers}
     else
       {:ok, %{"numbers" => []}} -> {:error, "empty list"}
+      {:ok, %{body: "{\"error\":\"Simulated internal error\"}"}} -> {:error, "internal error"}
       {:error, reason} -> {:error, reason}
     end
   end

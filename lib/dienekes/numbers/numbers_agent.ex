@@ -13,4 +13,8 @@ defmodule Dienekes.Numbers.NumbersAgent do
   def put(number_list) do
     Agent.update(@name, fn(numbers) -> numbers ++ number_list end)
   end
+
+  def delete_all do
+    Agent.update(@name, fn(numbers) -> [] end)
+  end
 end
