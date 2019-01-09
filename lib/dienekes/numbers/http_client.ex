@@ -10,7 +10,7 @@ defmodule Dienekes.Numbers.HTTPClient do
   def get_numbers_from(page_index) when page_index > 0 and is_integer(page_index) do
     endpoint = @api_endpoint <> "?page=#{page_index}"
 
-    with {:ok, %{status_code: 200, body: body}} <- HTTPoison.get(endpoint),
+    with {:ok, %{status_code: 200, body: body}} <- HTTPoison.get(endpoint, [], [timeout: 50_000, recv_timeout: 50_000]),
          {:ok, %{"numbers" => numbers}} when numbers != [] <- Jason.decode(body) do
       {:ok, numbers}
     else
