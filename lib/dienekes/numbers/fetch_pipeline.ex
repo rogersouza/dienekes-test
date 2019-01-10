@@ -1,10 +1,10 @@
 defmodule Dienekes.Numbers.FetchPipeline do
   @moduledoc """
   A interface that represents the [fetch] -> [save] pipeline
-  to get all numbers in Dienekes API and sort them
+  for fetch and sort all Dienekes API's numbers
   """
   @callback fetch_sorted() :: :ok
   @callback fetch_from(integer()) :: list()
   @callback sort(list(integer())) :: list(integer())
-  @callback save(integer()) :: :ok | {:error, String.t}
+  @callback save(list()) :: :ok | {:error, String.t}
 end

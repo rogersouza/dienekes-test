@@ -1,14 +1,16 @@
 defmodule Dienekes.Numbers.FetchHTTPPipeline do
   @moduledoc """
   This mudule is reponsible for fetch all pages in Dienekes API.
-  [10_001 pages] -> [FETCH_NUMBERS] ->  [SORT_NUMBERS] ->[SAVE_NUMBERS]
+  [PAGES]->[FETCH]->[SORT]->[SAVE]
 
   All the numbers are persisted in our agent, NumbersAgent
   """
   @behaviour Dienekes.Numbers.FetchPipeline
 
-  alias Dienekes.Numbers.HTTPClient
-  alias Dienekes.Numbers.NumbersAgent
+  alias Dienekes.Numbers.{
+    NumbersAgent,
+    QuickSort
+  }
 
   @impl true
   def fetch_sorted do
@@ -17,6 +19,9 @@ defmodule Dienekes.Numbers.FetchHTTPPipeline do
     |> Flow.partition(max_demand: 200, stages: 100)
     |> Flow.map(&fetch_from/1)
     |> Flow.reduce(fn -> [] end, fn numbers, list -> numbers ++ list end)
+    |> Flow.departition(fn -> [] end, &Enum.concat/2, &(&1))
+    |> Enum.to_list()
+    |> List.flatten()
     |> sort()
     |> save()
 
@@ -33,12 +38,12 @@ defmodule Dienekes.Numbers.FetchHTTPPipeline do
   end
 
   @impl true
-  def save(numbers) do
+  def save(numbers) when is_list(numbers) do
     NumbersAgent.put(numbers)
   end
 
   @impl true
   def sort(numbers) do
-    Enum.sort(numbers)
+    QuickSort.sort(numbers)
   end
 end
