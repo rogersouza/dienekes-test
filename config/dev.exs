@@ -54,3 +54,5 @@ config :dienekes, Dienekes.Repo,
   database: "dienekes_dev",
   hostname: "localhost",
   pool_size: 10
+
+config :dienekes, fetcher: Dienekes.Numbers.FetchHTTPPipeline

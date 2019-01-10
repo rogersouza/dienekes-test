@@ -16,3 +16,5 @@ config :dienekes, Dienekes.Repo,
   database: "dienekes_test",
   hostname: "localhost",
   pool: Ecto.Adapters.SQL.Sandbox
+
+config :dienekes, fetcher: Dienekes.Numbers.FetchTestPipeline
