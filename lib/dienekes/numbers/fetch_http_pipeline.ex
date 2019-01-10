@@ -3,12 +3,13 @@ defmodule Dienekes.Numbers.FetchHTTPPipeline do
   This mudule is reponsible for fetch all pages in Dienekes API.
   [PAGES]->[FETCH]->[SORT]->[SAVE]
 
-  All the numbers are persisted in our agent, NumbersAgent
+  All the numbers are persisted in our agent, InMemoryDatabase
   """
   @behaviour Dienekes.Numbers.FetchPipeline
 
   alias Dienekes.Numbers.{
-    NumbersAgent,
+    InMemoryDatabase,
+    HTTPClient,
     QuickSort
   }
 
@@ -39,7 +40,7 @@ defmodule Dienekes.Numbers.FetchHTTPPipeline do
 
   @impl true
   def save(numbers) when is_list(numbers) do
-    NumbersAgent.put(numbers)
+    InMemoryDatabase.put(numbers)
   end
 
   @impl true

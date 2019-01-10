@@ -1,4 +1,7 @@
-defmodule Dienekes.Numbers.NumbersAgent do
+defmodule Dienekes.Numbers.InMemoryDatabase do
+  @moduledoc """
+  A simple in-memory database to store our numbers
+  """
   use Agent
 
   @name __MODULE__
@@ -15,6 +18,6 @@ defmodule Dienekes.Numbers.NumbersAgent do
   end
 
   def delete_all do
-    Agent.update(@name, fn(numbers) -> [] end)
+    Agent.update(@name, fn(_) -> [] end)
   end
 end

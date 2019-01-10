@@ -14,7 +14,7 @@ defmodule Dienekes.Application do
       DienekesWeb.Endpoint,
       # Starts a worker by calling: Dienekes.Worker.start_link(arg)
       # {Dienekes.Worker, arg},
-      Dienekes.Numbers.NumbersAgent
+      Dienekes.Numbers.InMemoryDatabase
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html
