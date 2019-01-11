@@ -4,9 +4,10 @@ defmodule DienekesWeb.NumbersController do
 
   @numbers_per_page Application.get_env(:dienekes, :numbers_per_page)
 
-  def get_numbers(conn, %{"page" => page}) do
+  def get_numbers(conn, params) do
     case Numbers.get_numbers() do
       {:ok, numbers} ->
+        page = Map.get(params, "page", "1")
         paginated_numbers = paginate(numbers, page)
         render(conn, "numbers.json", numbers: paginated_numbers)
 
@@ -15,7 +16,7 @@ defmodule DienekesWeb.NumbersController do
     end
   end
 
-  defp get_window(1), do: {0, @numbers_per_page - 1}
+  defp get_window("1"), do: {0, @numbers_per_page - 1}
 
   defp get_window(page) do
     page = String.to_integer(page)
