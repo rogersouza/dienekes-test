@@ -3,20 +3,16 @@ defmodule Dienekes.Numbers.QuickSort do
     qsort(list)
   end
 
-
   defp qsort([]), do: []
   defp qsort([pivot]), do: [pivot]
+
   defp qsort(list) do
     {pivot, list} = extract_pivot(list)
-    {left, right} =
-      list
-      |> Enum.split_with(fn x -> x <= pivot end)
-
-    qsort(left) ++ [pivot] ++ qsort(right)
+    {left, right} = partition(list, pivot)
+    merge(left, pivot, right)
   end
 
-  def extract_pivot([pivot | rest]), do: {pivot, rest}
-
-
-
+  defp extract_pivot([pivot | rest]), do: {pivot, rest}
+  defp partition(list, pivot), do: Enum.split_with(list, fn x -> x <= pivot end)
+  defp merge(left, pivot, right), do: qsort(left) ++ [pivot] ++ qsort(right)
 end
