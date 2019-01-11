@@ -7,7 +7,7 @@
   * Load - Expor uma API pra acessar os números ordenados
 
 ## Preparando o ambiente
-  * `Instalar Elixir 1.7.4 https://elixir-lang.org/install.html
+  * Instalar Elixir 1.7.4 https://elixir-lang.org/install.html
   * `git clone https://github.com/rogersouza/dienekes-test`
   * `cd dienekes-test`
   * `mix deps.get`
