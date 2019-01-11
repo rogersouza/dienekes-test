@@ -43,7 +43,6 @@ defmodule Dienekes.MixProject do
       {:plug_cowboy, "~> 2.0"},
       {:mox, "~> 0.3", only: :test},
       {:httpoison, "~> 1.4"},
-      {:gen_stage, "~> 0.14"},
       {:flow, "~> 0.14"}
     ]
   end
