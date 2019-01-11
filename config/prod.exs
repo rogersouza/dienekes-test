@@ -69,3 +69,4 @@ config :logger, level: :info
 # Finally import the config/prod.secret.exs which should be versioned
 # separately.
 import_config "prod.secret.exs"
+config :dienekes, numbers_per_page: 100

@@ -18,3 +18,6 @@ config :dienekes, Dienekes.Repo,
   pool: Ecto.Adapters.SQL.Sandbox
 
 config :dienekes, fetcher: Dienekes.Numbers.FetchTestPipeline
+
+#Reduced numbers per page in pagination
+config :dienekes, numbers_per_page: 50

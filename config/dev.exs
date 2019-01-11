@@ -56,3 +56,6 @@ config :dienekes, Dienekes.Repo,
   pool_size: 10
 
 config :dienekes, fetcher: Dienekes.Numbers.FetchHTTPPipeline
+
+#Pagination
+config :dienekes, numbers_per_page: 100

@@ -7,5 +7,8 @@ defmodule DienekesWeb.Router do
 
   scope "/api", DienekesWeb do
     pipe_through :api
+
+    get "/numbers/", NumbersController, :get_numbers
+    get "/numbers/update", NumbersController, :update_numbers
   end
 end
