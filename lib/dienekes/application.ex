@@ -6,6 +6,7 @@ defmodule Dienekes.Application do
   use Application
 
   def start(_type, _args) do
+    import Supervisor.Spec
     # List all child processes to be supervised
     children = [
       # Start the Ecto repository
@@ -14,7 +15,9 @@ defmodule Dienekes.Application do
       DienekesWeb.Endpoint,
       # Starts a worker by calling: Dienekes.Worker.start_link(arg)
       # {Dienekes.Worker, arg},
-      Dienekes.Numbers.InMemoryDatabase
+      Dienekes.Numbers.InMemoryDatabase,
+      # Fetch numbers from Dienekes's API
+      worker(Task, [&Dienekes.Numbers.update_numbers/0], restart: :temporary)
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html
